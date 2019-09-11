@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -6,15 +7,16 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
 }
 
 .container {
-  width: 300px;
+  width: 600px;
   margin: 150px auto;
   background: #616161;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 3px;
   color: #fff;
 }
 
@@ -26,29 +28,40 @@ body {
       justify-content: space-around;
   -ms-flex-flow: wrap;
       flex-flow: wrap;
-  margin: 20px;
+  margin: 60px;
 }
 
-.line {
+.row .line {
   border: .5px solid #fff;
   width: 100%;
 }
 
-button {
-  margin: 10px 5px;
-  width: 100px;
+.row h4 {
+  font-size: 4em;
+  font-weight: 300;
+}
+
+.row p {
+  font-size: 2em;
+}
+
+.row button {
+  margin: 15px 5px;
+  width: 200px;
   padding: 10px 20px;
   color: #fff;
   cursor: pointer;
   background: none;
   outline: none;
   border: 1px solid #fff;
+  font-family: 'Montserrat', sans-serif;
   border-radius: 3px;
   -webkit-transition: .2s;
   transition: .2s;
+  font-size: 2em;
 }
 
-button:hover {
+.row button:hover {
   background: #fff;
   color: #333;
 }
