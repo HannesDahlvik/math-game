@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mathqueen</title>
+    <title>Math game</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <div id="game" class="container">
         <div class="row" style="justify-content: space-between">
             <p>Addition</p>
-            <p id="numberOfQuestions"></p>
+            <p id="questionCounter"></p>
         </div>
         <div class="line"></div>
         <div class="row">
@@ -26,6 +26,24 @@
             <button id="number2"></button>
             <button id="number3"></button>
             <button id="number4"></button>
+        </div>
+    </div>
+
+    <div id="result" class="container">
+        <div class="row" style="justify-content: space-between">
+            <p>Addition</p>
+            <p class="questionCounter"></p>
+        </div>
+        <div class="line"></div>
+        <div class="row">
+            <p id="helperText">Good!</p>
+        </div>
+        <div class="row">
+            <p id="resultText"></p>
+        </div>
+        <div class="line"></div>
+        <div class="row">
+            <button id="playAgain">Play again</button>
         </div>
     </div>
 

@@ -13,11 +13,16 @@ body {
 
 .container {
     width: 600px;
-    margin: 150px auto;
+    margin: 50px auto;
     background: #616161;
     padding: 20px;
     border-radius: 3px;
     color: #fff;
+}
+
+.line {
+    border: .5px solid #fff;
+    width: 100%;
 }
 
 .row {
@@ -25,11 +30,7 @@ body {
     justify-content: space-around;
     flex-flow: wrap;
     margin: 60px;
-
-    .line {
-        border: .5px solid #fff;
-        width: 100%;
-    }
+    text-align: center;
 
     h4 {
         font-size: 4em;
@@ -42,7 +43,7 @@ body {
 
     button {
         margin: 15px 5px;
-        width: 200px;
+        width: calc(50% - 10px);
         padding: 10px 20px;
         color: #fff;
         cursor: pointer;
