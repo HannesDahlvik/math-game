@@ -1,8 +1,8 @@
 let game = document.getElementById('game');
 
-const questionCountDisplay = document.getElementById('questionCounter');
+const questionCounter = document.getElementById('questionCounter');
 
-let questionNumber = 0;
+let questionNumber = 1;
 const numberOfQuestions = 10;
 
 let question = document.getElementById('question');
@@ -18,15 +18,15 @@ randomNumber2 = (Math.floor(Math.random() * 100))
 let rightCounter = 0;
 let wrongCounter = 0;
 
-questionCountDisplay.innerHTML = questionNumber + ' / ' + numberOfQuestions
+questionCounter.innerHTML = questionNumber + ' / ' + numberOfQuestions
 
 let array = [number1, number2, number3, number4];
 
 function resetNumbers() {
-    number1.innerHTML = (Math.floor(Math.random() * 100))
-    number2.innerHTML = (Math.floor(Math.random() * 100))
-    number3.innerHTML = (Math.floor(Math.random() * 100))
-    number4.innerHTML = (Math.floor(Math.random() * 100))
+    number1.innerHTML = (Math.floor(Math.random() * 200))
+    number2.innerHTML = (Math.floor(Math.random() * 200))
+    number3.innerHTML = (Math.floor(Math.random() * 200))
+    number4.innerHTML = (Math.floor(Math.random() * 200))
 
     randomNumber1 = (Math.floor(Math.random() * 100))
     randomNumber2 = (Math.floor(Math.random() * 100))
@@ -35,9 +35,9 @@ function resetNumbers() {
 
     array[Math.floor(Math.random() * 4)].innerHTML = answer(randomNumber1, randomNumber2);
 
-    questionCountDisplay.innerHTML = questionNumber + ' / ' + numberOfQuestions
+    questionCounter.innerHTML = questionNumber + ' / ' + numberOfQuestions
 
-    console.log(answer(randomNumber1, randomNumber2));
+    console.log(answer(randomNumber1, randomNumber2))
 }
 resetNumbers();
 
@@ -62,14 +62,14 @@ playAgain.addEventListener('click', playAgainFunction)
 function playAgainFunction() {
     rightCounter = 0;
     wrongCounter = 0;
-    questionNumber = 0;
+    questionNumber = 1;
     game.style.display = 'block';
     result.style.display = 'none';
     resetNumbers();
 }
 
 function guess() {
-    if (questionNumber === numberOfQuestions) {
+    if (questionNumber == numberOfQuestions) {
         game.style.display = 'none'
         result.style.display = 'block'
         resultText.innerHTML = 'You got ' + rightCounter + ' out of ' + numberOfQuestions;
@@ -85,7 +85,6 @@ function guess() {
         rightCounter += 1;
         questionNumber += 1;
         resetNumbers();
-
     } else {
         wrongCounter += 1;
         questionNumber += 1;
