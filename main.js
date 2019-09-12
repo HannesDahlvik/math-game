@@ -7,6 +7,8 @@ const numberOfQuestions = 10;
 
 let question = document.getElementById('question');
 
+let numbers = document.getElementById('numbers');
+
 let number1 = document.getElementById('number1');
 let number2 = document.getElementById('number2');
 let number3 = document.getElementById('number3');
@@ -50,12 +52,15 @@ number2.addEventListener('click', guess);
 number3.addEventListener('click', guess);
 number4.addEventListener('click', guess);
 
-let result = document.getElementById('result');
 let resultText = document.getElementById('resultText');
 let playAgain = document.getElementById('playAgain');
 let helperText = document.getElementById('helperText');
+let column = document.getElementById('col');
 
-result.style.display = 'none';
+resultText.style.display = 'none';
+playAgain.style.display = 'none';
+helperText.style.display = 'none';
+column.style.display = 'none';
 
 playAgain.addEventListener('click', playAgainFunction)
 
@@ -63,16 +68,32 @@ function playAgainFunction() {
     rightCounter = 0;
     wrongCounter = 0;
     questionNumber = 1;
-    game.style.display = 'block';
-    result.style.display = 'none';
     resetNumbers();
+    question.style.display = 'block';
+    numbers.style.display = 'flex';
+    helperText.style.display = 'none';
+    resultText.style.display = 'none';
+    column.style.display = 'none';
+    playAgain.style.display = 'none';
 }
 
-function guess() {
-    if (questionNumber == numberOfQuestions) {
-        game.style.display = 'none'
-        result.style.display = 'block'
+function guess(event) {
+    if (parseInt(event.target.innerHTML) === answer(randomNumber1, randomNumber2)) {
+        rightCounter += 1;
+        resetNumbers();
+    } else {
+        wrongCounter += 1;
+        resetNumbers();
+    }
+
+    if (questionNumber === numberOfQuestions) {
         resultText.innerHTML = 'You got ' + rightCounter + ' out of ' + numberOfQuestions;
+        question.style.display = 'none';
+        numbers.style.display = 'none';
+        helperText.style.display = 'block';
+        resultText.style.display = 'block';
+        column.style.display = 'block';
+        playAgain.style.display = 'inline-block';
 
         if (rightCounter >= 4) {
             helperText.innerHTML = 'Good!';
@@ -81,13 +102,5 @@ function guess() {
         }
     }
 
-    if (parseInt(event.target.innerHTML) === answer(randomNumber1, randomNumber2)) {
-        rightCounter += 1;
-        questionNumber += 1;
-        resetNumbers();
-    } else {
-        wrongCounter += 1;
-        questionNumber += 1;
-        resetNumbers();
-    }
+    questionNumber += 1;
 }
