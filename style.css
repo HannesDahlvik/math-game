@@ -34,8 +34,14 @@ body {
     justify-content: space-around;
     -ms-flex-flow: wrap;
     flex-flow: wrap;
-    margin: 35px;
+    margin: 40px;
     text-align: center;
+}
+
+canvas {
+    width: 350px !important;
+    height: 250px !important;
+    margin: 0 auto;
 }
 
 .row h4 {

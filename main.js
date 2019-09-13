@@ -52,17 +52,21 @@ number2.addEventListener('click', guess);
 number3.addEventListener('click', guess);
 number4.addEventListener('click', guess);
 
-let resultText = document.getElementById('resultText');
+// let resultText = document.getElementById('resultText');
 let playAgain = document.getElementById('playAgain');
 let helperText = document.getElementById('helperText');
 let column = document.getElementById('col');
 
-resultText.style.display = 'none';
+let canvas = document.getElementById('myChart')
+
+// resultText.style.display = 'none';
 playAgain.style.display = 'none';
 helperText.style.display = 'none';
 column.style.display = 'none';
 
 playAgain.addEventListener('click', playAgainFunction)
+
+canvas.style.display = 'none';
 
 function playAgainFunction() {
     rightCounter = 0;
@@ -73,9 +77,10 @@ function playAgainFunction() {
     led.style.display = 'block';
     numbers.style.display = 'flex';
     helperText.style.display = 'none';
-    resultText.style.display = 'none';
+    // resultText.style.display = 'none';
     column.style.display = 'none';
     playAgain.style.display = 'none';
+    canvas.style.display = 'none';
 }
 
 let led = document.getElementById('led');
@@ -101,14 +106,15 @@ function guess(event) {
 
     if (questionNumber === numberOfQuestions) {
         setTimeout(function () {
-            resultText.innerHTML = 'You got ' + rightCounter + ' out of ' + numberOfQuestions;
+            // resultText.innerHTML = 'You got ' + rightCounter + ' out of ' + numberOfQuestions;
             question.style.display = 'none';
             numbers.style.display = 'none';
             helperText.style.display = 'block';
-            resultText.style.display = 'block';
+            // resultText.style.display = 'block';
             column.style.display = 'block';
             playAgain.style.display = 'inline-block';
             led.style.display = 'none';
+            canvas.style.display = 'block';
 
             if (rightCounter >= 4) {
                 helperText.innerHTML = 'Good!';
@@ -116,6 +122,48 @@ function guess(event) {
                 helperText.innerHTML = 'Mayby you need some more practice.';
             }
         }, 500)
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Wrong', 'Right'],
+                datasets: [{
+                    label: 'Right / Wrong',
+                    data: [wrongCounter, rightCounter],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        fontColor: 'white'
+                    }
+                }
+            }
+        });
     }
 
     questionNumber += 1;
