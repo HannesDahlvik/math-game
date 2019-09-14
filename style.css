@@ -39,8 +39,8 @@ body {
 }
 
 canvas {
-    width: 350px !important;
-    height: 250px !important;
+    width: 600px !important;
+    height: 300px !important;
     margin: 0 auto;
 }
 
@@ -82,7 +82,6 @@ button:hover {
 
 #playAgain {
     padding: 10px;
-    width: 100%;
 }
 
 #led {

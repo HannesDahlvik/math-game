@@ -52,36 +52,17 @@ number2.addEventListener('click', guess);
 number3.addEventListener('click', guess);
 number4.addEventListener('click', guess);
 
-// let resultText = document.getElementById('resultText');
 let playAgain = document.getElementById('playAgain');
 let helperText = document.getElementById('helperText');
 let column = document.getElementById('col');
 
 let canvas = document.getElementById('myChart')
 
-// resultText.style.display = 'none';
 playAgain.style.display = 'none';
 helperText.style.display = 'none';
 column.style.display = 'none';
 
-playAgain.addEventListener('click', playAgainFunction)
-
 canvas.style.display = 'none';
-
-function playAgainFunction() {
-    rightCounter = 0;
-    wrongCounter = 0;
-    questionNumber = 1;
-    resetNumbers();
-    question.style.display = 'block';
-    led.style.display = 'block';
-    numbers.style.display = 'flex';
-    helperText.style.display = 'none';
-    // resultText.style.display = 'none';
-    column.style.display = 'none';
-    playAgain.style.display = 'none';
-    canvas.style.display = 'none';
-}
 
 let led = document.getElementById('led');
 
@@ -145,26 +126,38 @@ function guess(event) {
             options: {
                 responsive: true,
                 maintainAspectRatio: true,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
                 legend: {
                     labels: {
-                        // This more specific font property overrides the global property
                         fontColor: 'white'
                     }
                 }
             }
         });
+
+        playAgain.addEventListener('click', destroyChart)
+
+        function destroyChart() {
+            myChart.destroy();
+        }
     }
 
     questionNumber += 1;
+}
+
+playAgain.addEventListener('click', playAgainFunction)
+
+function playAgainFunction() {
+    rightCounter = 0;
+    wrongCounter = 0;
+    questionNumber = 1;
+    resetNumbers();
+    question.style.display = 'block';
+    led.style.display = 'block';
+    numbers.style.display = 'flex';
+    helperText.style.display = 'none';
+    // resultText.style.display = 'none';
+    column.style.display = 'none';
+    playAgain.style.display = 'none';
+    canvas.style.display = 'none';
+    // myChart.destroy();
 }
